@@ -1,7 +1,13 @@
 # Query-Helper
+Description
 - Query Helper is a java mini project.
 - It can be used as a tiny template engine.
 - It can help developers to write database queries especially.
+
+Installation
+- It needs Java SE 1.8
+
+Short cut
 - Ctrl + f = Formula Text
 - Ctrl + i = Input Text
 - Ctrl + r = Click 'Run' button
