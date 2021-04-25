@@ -4,8 +4,11 @@ Description
 - It can be used as a tiny template engine.
 - It can help developers to write database queries especially.
 
-Installation
-- It needs Java SE 1.8
+Requirements
+- JDK 1.8+
+
+User Manual
+- Download and click a "Query Helper".jar which is a runnable jar file.
 
 Short cut
 - Ctrl + f = Formula Text
