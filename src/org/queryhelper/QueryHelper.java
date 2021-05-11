@@ -1,6 +1,8 @@
 package org.queryhelper;
 
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 /** @author Soe Min Htut */
@@ -10,8 +12,8 @@ public class QueryHelper {
   private String topText, leftText, rightText;
 
   public QueryHelper(String topText, String leftText, String rightText) {
-    this.topText   = topText;
-    this.leftText  = leftText;
+    this.topText = topText;
+    this.leftText = leftText;
     this.rightText = rightText;
     this.msg = "";
   }
@@ -21,7 +23,7 @@ public class QueryHelper {
     if (isItOkToExecute()) {
       try {
         if (topText != null && topText.contains("#")) {
-          formulaTokenCount = topText.split("#").length - 1;
+          formulaTokenCount = topText.split("#").length + 1;
 
         } else {
           msg += "Error: # is required on the top formula text.\n";
@@ -38,6 +40,7 @@ public class QueryHelper {
   private void putDataIntoExpression(int formulaTokenCount) {
     int inputTokenCount = 0;
     String eachLineText;
+    boolean hasDone = false;
 
     if (isItOkToExecute()) {
 
@@ -54,11 +57,19 @@ public class QueryHelper {
         while (eachToken.hasMoreTokens()
             && eachLineText.contains("#")
             && inputTokenCount < formulaTokenCount) {
-          eachLineText = eachLineText.replaceFirst("#", eachToken.nextToken().trim());
+          eachLineText =
+              eachLineText.replaceFirst(
+                  Pattern.quote("#"), Matcher.quoteReplacement(eachToken.nextToken().trim()));
           inputTokenCount++;
+          hasDone = true;
         }
 
-        rightText += eachLineText + "\n";
+        if (hasDone) {
+          rightText += eachLineText + "\n";
+        }
+
+        inputTokenCount = 0;
+        hasDone = false;
       }
       msg = "OK";
 
