@@ -8,7 +8,7 @@ Requirements
 - JDK 1.8+
 
 User Manual
-- Download and click a "Query Helper".jar which is a runnable jar file.
+- Download and click a "Query_Helper_Version_1.2".jar which is a runnable jar file.
 
 Short cut
 - Ctrl + f = Formula Text
